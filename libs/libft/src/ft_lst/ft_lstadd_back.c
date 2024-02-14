@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 18:23:14 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/07 19:04:28 by pabeckha         ###   ########.fr       */
+/*   Created: 2023/11/27 15:41:01 by pabeckha          #+#    #+#             */
+/*   Updated: 2023/11/28 17:09:43 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h>
-# include <stdio.h>
-# include <sys/wait.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    int id = fork();
-    int n;
+	t_list	*last;
 
-    if (id == 0)
-        n = 1;
-    else
-        n = 6;
-
-    if (id != 0)
-        wait(NULL);
-    int i;
-    for (i = n; i < n + 5; i++)
-    {
-        printf("%d ", i);
-        fflush(stdout);
-    }
-    if (id != 0)
-        printf("\n");
-    
-    return (0);
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = new;
 }

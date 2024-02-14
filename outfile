@@ -1,0 +1,14 @@
+a.out
+example_pipe.c
+execve.c
+execve_fork.c
+fork.c
+inc
+infile
+libs
+Makefile
+obj
+outfile
+pipe.c
+pipex
+src
