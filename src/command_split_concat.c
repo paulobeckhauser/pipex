@@ -6,11 +6,11 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:57:09 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/14 15:24:48 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:08:39 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/pipex.h"
+#include "../inc/pipex.h"
 
 static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
 {
@@ -55,9 +55,9 @@ static char	*fill_word(const char *str, int start, int end, char *command)
 		i++;
 		start++;
 	}
-    word[i] = '/';
-    i++;
-    ft_strlcat(word, command, ft_strlen(command) + ft_strlen(word) + 1);
+	word[i] = '/';
+	i++;
+	ft_strlcat(word, command, ft_strlen(command) + ft_strlen(word) + 1);
 	return (word);
 }
 
@@ -75,8 +75,7 @@ static void	*ft_free(char **strs, int count)
 	return (NULL);
 }
 
-
-char	**ft_split_concat(char const *s, char c, char *command)
+char	**split_concat_command(char const *s, char c, char *command)
 {
 	char	**array;
 	size_t	i;
