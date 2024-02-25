@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_concat.c                                  :+:      :+:    :+:   */
+/*   command_split_concat.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:57:09 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/16 12:08:39 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:51:31 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,19 @@ static char	*fill_word(const char *str, int start, int end, char *command)
 {
 	char	*word;
 	int		i;
+	int len_command;
+	// const int len_command = ft_strlen(command);
+	int total_size;
 
+	if (command == NULL)
+	{
+		return (NULL);
+	}
+	len_command = ft_strlen(command);
+	
 	i = 0;
-	word = malloc((end - start + 1 + 1 + ft_strlen(command)) * sizeof(char));
+	total_size = end - start + 1 + 1 + len_command;
+	word = (char *)ft_calloc(total_size, sizeof(char));
 	if (!word)
 		return (NULL);
 	while (start < end)
@@ -57,7 +67,8 @@ static char	*fill_word(const char *str, int start, int end, char *command)
 	}
 	word[i] = '/';
 	i++;
-	ft_strlcat(word, command, ft_strlen(command) + ft_strlen(word) + 1);
+	ft_strlcat(word, command, total_size);
+	word[i + len_command] = '\0';
 	return (word);
 }
 
@@ -81,24 +92,31 @@ char	**split_concat_command(char const *s, char c, char *command)
 	size_t	i;
 	int		j;
 	int		s_word;
+	size_t	s_len;
 
 	ft_initiate_vars(&i, &j, &s_word);
-	array = ft_calloc((word_count(s, c) + 1), sizeof(char *));
+	s_len = ft_strlen(s);
+	array = ft_calloc((word_count(s, c) + 2), sizeof(char *));
 	if (!array)
 		return (NULL);
-	while (i <= ft_strlen(s))
+	while (i < s_len)
 	{
 		if (s[i] != c && s_word < 0)
 			s_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
+		else if ((s[i] == c || i == s_len) && s_word >= 0)
 		{
 			array[j] = fill_word(s, s_word, i, command);
 			if (!(array[j]))
-				return (ft_free(array, j));
+			{
+				ft_free(array, j);
+				free(array);
+				return (NULL);
+			}
 			s_word = -1;
 			j++;
 		}
 		i++;
 	}
+	array[j] = NULL;
 	return (array);
 }

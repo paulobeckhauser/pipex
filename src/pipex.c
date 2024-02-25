@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:23:14 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/22 18:26:12 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/23 12:10:32 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,6 @@
 int	main(int argc, char **argv, char **envp)
 
 {
-
-	// char *path_command1;
-	// char *path_command2;
-	// char **array_first_command;
-	// char **array_second_command;
-
-	// t_info structure;
-	
-	// structure.first_command = ft_split(argv[2], ' ');
-	// structure.second_command = ft_split(argv[3], ' ');
-	// structure.envp_values = envp;
-
-	
-	
-
-
-	
-
-	// structure = get_path_env(structure);
-
-
-	// structure = command_get_first_path(structure, structure.first_command[0]);
-	// structure = command_get_second_path(structure, structure.second_command[0]);
 
 
 	char *path_command1;
@@ -108,7 +85,7 @@ int	main(int argc, char **argv, char **envp)
 
 
 
-	structure.envp_values = envp;
+	// structure.envp_values = envp;
 
 
 
@@ -155,9 +132,6 @@ int	main(int argc, char **argv, char **envp)
 		i++;
 	}
 	structure.path_commands[i] = NULL;
-
-
-	
 
 
 
