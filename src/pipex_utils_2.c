@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 18:26:30 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 11:35:21 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:43:31 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	number_commands(t_info *structure)
 void	store_variables(t_info *structure)
 {
 	number_commands(structure);
-	commands_full_string_store(structure);
+	full_string_store(structure);
 	commands_allocate_memory(structure);
 	commands_store(structure);
 	get_path_env(structure);
@@ -34,7 +34,7 @@ void	store_variables(t_info *structure)
 
 void	free_variables(t_info *structure)
 {
-	free_commands_full_string(structure);
+	free_full_string(structure);
 	free_commands(structure);
 	free(structure->path_env);
 	free_path_commands(structure);
@@ -56,10 +56,5 @@ void	pipes_structure(t_info *structure)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-	pipes_creation(structure);
-	structure->pid = (pid_t *)ft_calloc((structure->number_commands + 1),
-			sizeof(pid_t));
-	pipes_utilization(structure);
-	close_pipes(structure);
-	wait_child_processess(structure);
+	pipes_definition(structure);
 }

@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:18:58 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 10:29:13 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:48:53 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	pipes_creation(t_info *structure)
 			return ;
 		}
 		if (pipe(structure->fds_pipes[i]) == -1)
-		{
 			perror("Pipe creation failed");
-		}
 		i++;
 	}
 	structure->fds_pipes[i] = NULL;
@@ -46,7 +44,6 @@ void	pipes_utilization(t_info *structure)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 0;
 	while (i < structure->number_commands)
@@ -71,11 +68,10 @@ void	pipes_utilization(t_info *structure)
 			j = 0;
 			while (j < structure->number_commands - 1)
 			{
-				close(structure->fds_pipes[j][0]);
-				close(structure->fds_pipes[j][1]);
+				close_pipes_child(structure, j);
 				j++;
 			}
-			structure->argv_commands = ft_split(structure->commands_full_string[i],
+			structure->argv_commands = ft_split(structure->full_string[i],
 					' ');
 			execve(structure->path_commands[i], structure->argv_commands,
 				structure->envp);

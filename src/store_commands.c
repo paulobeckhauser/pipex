@@ -6,13 +6,13 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:20:16 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 10:35:31 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:39:46 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	commands_full_string_store(t_info *structure)
+void	full_string_store(t_info *structure)
 {
 	int		j;
 	size_t	len_string;
@@ -22,9 +22,9 @@ void	commands_full_string_store(t_info *structure)
 		first_command_position = 3;
 	else 
 		first_command_position = 2;
-	structure->commands_full_string = (char **)malloc(((structure->argc - 3)
+	structure->full_string = (char **)malloc(((structure->argc - 3)
 				+ 1) * sizeof(char *));
-	if (!structure->commands_full_string)
+	if (!structure->full_string)
 	{
 		perror("Memory allocation failed!\n");
 		exit(EXIT_FAILURE);
@@ -33,14 +33,14 @@ void	commands_full_string_store(t_info *structure)
 	while (first_command_position <= structure->argc - 2)
 	{
 		len_string = ft_strlen(structure->argv[first_command_position]);
-		structure->commands_full_string[j] = (char *)malloc((len_string + 1)
+		structure->full_string[j] = (char *)malloc((len_string + 1)
 				* sizeof(char));
-		ft_strlcpy(structure->commands_full_string[j],
+		ft_strlcpy(structure->full_string[j],
 			structure->argv[first_command_position], len_string + 1);
 		first_command_position++;
 		j++;
 	}
-	structure->commands_full_string[j] = NULL;
+	structure->full_string[j] = NULL;
 }
 
 void	commands_allocate_memory(t_info *structure)
@@ -56,11 +56,11 @@ void	commands_allocate_memory(t_info *structure)
 		perror("Memory allocation failed!\n");
 		exit(EXIT_FAILURE);
 	}
-	while (structure->commands_full_string[i])
+	while (structure->full_string[i])
 	{
 		j = 0;
-		while (structure->commands_full_string[i][j]
-			&& structure->commands_full_string[i][j] != ' ')
+		while (structure->full_string[i][j]
+			&& structure->full_string[i][j] != ' ')
 			j++;
 		structure->commands[i] = (char *)ft_calloc((j + 1), sizeof(char));
 		i++;
@@ -73,13 +73,13 @@ void	commands_store(t_info *structure)
 	int	j;
 
 	i = 0;
-	while (structure->commands_full_string[i])
+	while (structure->full_string[i])
 	{
 		j = 0;
-		while (structure->commands_full_string[i][j]
-			&& structure->commands_full_string[i][j] != ' ')
+		while (structure->full_string[i][j]
+			&& structure->full_string[i][j] != ' ')
 		{
-			structure->commands[i][j] = structure->commands_full_string[i][j];
+			structure->commands[i][j] = structure->full_string[i][j];
 			j++;
 		}
 		i++;

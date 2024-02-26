@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/26 09:45:58 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/02/26 11:43:18 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)command_split_concat_utils.c \
 					$(SRC_DIR)pipex_utils.c \
 					$(SRC_DIR)pipex_utils_2.c \
+					$(SRC_DIR)pipex_utils_3.c \
 					$(SRC_DIR)free_variables.c \
 					$(SRC_DIR)store_arguments.c \
 
