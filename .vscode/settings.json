@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "cerrno": "c",
-        "random": "c",
-        "pipex.h": "c"
-    }
-}
