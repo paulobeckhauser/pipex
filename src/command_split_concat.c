@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:57:09 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/25 15:51:31 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:35:01 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,12 @@ static char	*fill_word(const char *str, int start, int end, char *command)
 {
 	char	*word;
 	int		i;
-	int len_command;
-	// const int len_command = ft_strlen(command);
-	int total_size;
+	int		len_command;
+	int		total_size;
 
 	if (command == NULL)
-	{
 		return (NULL);
-	}
 	len_command = ft_strlen(command);
-	
 	i = 0;
 	total_size = end - start + 1 + 1 + len_command;
 	word = (char *)ft_calloc(total_size, sizeof(char));
@@ -72,20 +68,6 @@ static char	*fill_word(const char *str, int start, int end, char *command)
 	return (word);
 }
 
-static void	*ft_free(char **strs, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free(strs[i]);
-		i++;
-	}
-	free(strs);
-	return (NULL);
-}
-
 char	**split_concat_command(char const *s, char c, char *command)
 {
 	char	**array;
@@ -95,23 +77,17 @@ char	**split_concat_command(char const *s, char c, char *command)
 	size_t	s_len;
 
 	ft_initiate_vars(&i, &j, &s_word);
-	s_len = ft_strlen(s);
 	array = ft_calloc((word_count(s, c) + 2), sizeof(char *));
 	if (!array)
 		return (NULL);
-	while (i < s_len)
+	while (i < ft_strlen(s))
 	{
 		if (s[i] != c && s_word < 0)
 			s_word = i;
-		else if ((s[i] == c || i == s_len) && s_word >= 0)
+		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
 		{
 			array[j] = fill_word(s, s_word, i, command);
-			if (!(array[j]))
-			{
-				ft_free(array, j);
-				free(array);
-				return (NULL);
-			}
+			check_and_free(array, j);
 			s_word = -1;
 			j++;
 		}

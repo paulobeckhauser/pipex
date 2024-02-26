@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/25 12:42:32 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/02/26 09:45:58 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ LIBFT			:= ./libs/libft/libft.a
 SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)search_path.c \
 					$(SRC_DIR)command_split_concat.c \
+					$(SRC_DIR)command_split_concat_utils.c \
 					$(SRC_DIR)pipex_utils.c \
 					$(SRC_DIR)pipex_utils_2.c \
 					$(SRC_DIR)free_variables.c \
@@ -76,13 +77,17 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 
 
 # Source Files
+# SRCS			:= 	$(SRC_DIR)pipex.c \
+# 					$(SHARED_SRCS) \
+
+
+# SRCS_BONUS		:= 	$(SRC_DIR)pipex_bonus.c \
+# 					$(SRC_DIR)pipex_bonus_utils.c \
+# 					$(SHARED_SRCS)\
+					
 SRCS			:= 	$(SRC_DIR)pipex.c \
-					$(SHARED_SRCS) \
-
-
-SRCS_BONUS		:= 	$(SRC_DIR)pipex_bonus.c \
 					$(SRC_DIR)pipex_bonus_utils.c \
-$					$(SHARED_SRCS)\
+					$(SHARED_SRCS)\
 
 # Creation of Object Files for each Source File
 OBJ				:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))

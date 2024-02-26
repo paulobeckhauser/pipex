@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:56:37 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/25 13:30:27 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/25 22:34:46 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,5 @@ void	get_path_env(t_info *structure)
 		}
 		i++;
 	}
-	// structure->path_env = (char *)malloc((len_path - ft_strlen("PATH=") + 1)
-	// 		* sizeof(char));
-	// if(!structure->path_env)
-	// {
-	// 	perror("Memory allocation failed!\n");
-	// 	exit(EXIT_FAILURE);
-	// }
 	structure->path_env = ft_strdup(structure->envp[i] + 5);
-
 }
-
-
