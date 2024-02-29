@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 11:25:06 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:52:52 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		*ft_free(char **strs, int count);
 char		**check_and_free(char **array, int j);
 void		condition_dup(t_info *structure, int i, int j);
 char		**split_concat_command(char const *s, char c, char *command);
+void		ft_pipes(t_info *structure);
 void		conditions_child(t_info *structure, int i);
 void		execution_commands(t_info *structure, int i);
 void		pipes_creation(t_info *structure);

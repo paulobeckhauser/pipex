@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:43:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 10:52:29 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:52:12 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ void	execution_commands(t_info *structure, int i)
 	structure->argv_commands = ft_split(structure->full_string[i], ' ');
 	execve(structure->path_commands[i], structure->argv_commands,
 		structure->envp);
+}
+
+void	ft_pipes(t_info *structure)
+{
+	store_variables(structure);
+	pipes_structure(structure);
+	free_variables(structure);
 }
