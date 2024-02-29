@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 11:49:28 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:25:06 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,18 @@ void		store_arguments(int argc, char **argv, char **envp,
 				t_info *structure);
 void		full_string_store(t_info *structure);
 void		commands_allocate_memory(t_info *structure);
+void		allocate_memory_path(t_info *structure);
 void		commands_store(t_info *structure);
 void		path_commands_store(t_info *structure);
 void		get_path_env(t_info *structure);
+void		condition_possible_paths(t_info *structure, int i, int j);
+void		copy_string(t_info *structure, int first_command_position);
 void		*ft_free(char **strs, int count);
 char		**check_and_free(char **array, int j);
+void		condition_dup(t_info *structure, int i, int j);
 char		**split_concat_command(char const *s, char c, char *command);
+void		conditions_child(t_info *structure, int i);
+void		execution_commands(t_info *structure, int i);
 void		pipes_creation(t_info *structure);
 void		pipes_utilization(t_info *structure);
 void		close_pipes(t_info *structure);

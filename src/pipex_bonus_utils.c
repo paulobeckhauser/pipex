@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:04:04 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 10:05:28 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:35:51 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	here_doc_structure(t_info *structure)
 		ft_printf("heredoc> ");
 		structure->here_doc_file = open("here_doc",
 				O_WRONLY | O_CREAT | O_APPEND, 0777);
-		i = -1;
-		while (input[i++])
-			write(structure->here_doc_file, &input[i++], 1);
+		i = 0;
+		while (input[i])
+		{
+			write(structure->here_doc_file, &input[i], 1);
+			i++;
+		}
 		free(input);
 		close(structure->here_doc_file);
 	}

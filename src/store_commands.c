@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:20:16 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 11:39:46 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:24:36 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,20 @@ void	full_string_store(t_info *structure)
 {
 	int		j;
 	size_t	len_string;
-	int first_command_position;
+	int		first_command_position;
 
 	if (structure->is_here_doc)
 		first_command_position = 3;
-	else 
+	else
 		first_command_position = 2;
-	structure->full_string = (char **)malloc(((structure->argc - 3)
-				+ 1) * sizeof(char *));
+	structure->full_string = (char **)malloc(((structure->argc - 3) + 1)
+			* sizeof(char *));
 	if (!structure->full_string)
 	{
 		perror("Memory allocation failed!\n");
 		exit(EXIT_FAILURE);
 	}
-	j = 0;
-	while (first_command_position <= structure->argc - 2)
-	{
-		len_string = ft_strlen(structure->argv[first_command_position]);
-		structure->full_string[j] = (char *)malloc((len_string + 1)
-				* sizeof(char));
-		ft_strlcpy(structure->full_string[j],
-			structure->argv[first_command_position], len_string + 1);
-		first_command_position++;
-		j++;
-	}
-	structure->full_string[j] = NULL;
+	copy_string(structure, first_command_position);
 }
 
 void	commands_allocate_memory(t_info *structure)
@@ -91,51 +80,17 @@ void	path_commands_store(t_info *structure)
 {
 	int	i;
 	int	j;
-	int	k;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (structure->commands[i])
-	{
-		i++;
-	}
-	structure->path_commands = (char **)malloc((i + 1) * sizeof(char *));
-	if (!structure->path_commands)
-	{
-		perror("Memory allocation failed!\n");
-		exit(EXIT_FAILURE);
-	}
+	allocate_memory_path(structure);
 	i = 0;
 	while (structure->commands[i])
 	{
 		structure->possible_paths = split_concat_command(structure->path_env,
 				':', structure->commands[i]);
-		if (structure->possible_paths == NULL)
-		{
-			free(structure->path_env);
-			free(structure->commands[i]);
-		}
-		else
-		{
-			j = 0;
-			while (structure->possible_paths[j])
-			{
-				if (access(structure->possible_paths[j], X_OK) == 0)
-					break ;
-				j++;
-			}
-			if (structure->possible_paths[j] != NULL)
-				structure->path_commands[i] = ft_strdup(structure->possible_paths[j]);
-			else
-				structure->path_commands[i] = NULL;
-		}
-		k = 0;
-		while (structure->possible_paths[k] != NULL)
-		{
-			free(structure->possible_paths[k]);
-			k++;
-		}
+		condition_possible_paths(structure, i, j);
+		j = -1;
+		while (structure->possible_paths[++j] != NULL)
+			free(structure->possible_paths[j]);
 		free(structure->possible_paths);
 		i++;
 	}

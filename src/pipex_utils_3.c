@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:41:23 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 11:48:19 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:42:49 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,8 @@ void	pipes_definition(t_info *structure)
 	wait_child_processess(structure);
 }
 
-// void execute_commands(t_info *structure)
-// {
-    
-// }
-
-void close_pipes_child(t_info *structure, int j)
+void	close_pipes_child(t_info *structure, int j)
 {
-    close(structure->fds_pipes[j][0]);
-    close(structure->fds_pipes[j][1]);
+	close(structure->fds_pipes[j][0]);
+	close(structure->fds_pipes[j][1]);
 }

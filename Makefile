@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/26 11:43:18 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/02/29 11:16:42 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,12 +67,14 @@ LIBFT			:= ./libs/libft/libft.a
 
 
 SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
+					$(SRC_DIR)store_commands_utils.c \
 					$(SRC_DIR)search_path.c \
 					$(SRC_DIR)command_split_concat.c \
 					$(SRC_DIR)command_split_concat_utils.c \
 					$(SRC_DIR)pipex_utils.c \
 					$(SRC_DIR)pipex_utils_2.c \
 					$(SRC_DIR)pipex_utils_3.c \
+					$(SRC_DIR)pipex_utils_4.c \
 					$(SRC_DIR)free_variables.c \
 					$(SRC_DIR)store_arguments.c \
 

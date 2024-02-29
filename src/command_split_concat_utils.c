@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 09:33:48 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 09:35:07 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:57:53 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,23 @@ char	**check_and_free(char **array, int j)
 		return (NULL);
 	}
 	return (array);
+}
+
+void	copy_string(t_info *structure, int first_command_position)
+{
+	int	j;
+	int	len_string;
+
+	j = 0;
+	while (first_command_position <= structure->argc - 2)
+	{
+		len_string = ft_strlen(structure->argv[first_command_position]);
+		structure->full_string[j] = (char *)malloc((len_string + 1)
+				* sizeof(char));
+		ft_strlcpy(structure->full_string[j],
+			structure->argv[first_command_position], len_string + 1);
+		first_command_position++;
+		j++;
+	}
+	structure->full_string[j] = NULL;
 }
