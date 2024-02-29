@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/29 14:10:18 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/02/29 16:42:56 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ PURPLE				=		"\033[0;35m"
 CYAN				=		"\033[0;36m"
 WHITE				=		"\033[1;37m"
 EOC					=		"\033[0;0m"
-LINE_CLEAR			=		"\x1b[1A\x1b[M"
 
 
 # Standard
@@ -56,7 +55,7 @@ OBJ_DIR			:= obj/
 # Compiler and Flags
 CC				:= cc
 RM				:= rm -f
-#CFLAGS			:= -Wall -Wextra -Werror
+CFLAGS			:= -Wall -Wextra -Werror
 
 # Libraries
 LIBFT			:= ./libs/libft/libft.a
@@ -84,9 +83,9 @@ SRCS_BONUS		:= 	$(SRC_DIR)pipex_bonus.c \
 					$(SRC_DIR)pipex_bonus_utils.c \
 					$(SHARED_SRCS)\
 					
-# SRCS			:= 	$(SRC_DIR)pipex.c \
-# 					$(SRC_DIR)pipex_bonus_utils.c \
-# 					$(SHARED_SRCS)\
+SRCS			:= 	$(SRC_DIR)pipex.c \
+					$(SRC_DIR)pipex_bonus_utils.c \
+					$(SHARED_SRCS)\
 
 # Creation of Object Files for each Source File
 OBJ				:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
@@ -101,7 +100,7 @@ bonus: 		${NAME}_bonus
 
 
 $(OBJ_DIR)%.o: 	$(SRC_DIR)%.c
-					@echo $(YELLOW) "Compiling...\t" $< $(EOC) $(LINE_CLEAR)
+					@echo $(YELLOW) "Compiling...\t" $< $(EOC)
 					@mkdir -p $(@D)
 					@${CC} ${CFLAGS} -I.libs/libft -c $? -o $@
 

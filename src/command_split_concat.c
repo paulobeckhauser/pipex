@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:57:09 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 09:35:01 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:45:50 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char	**split_concat_command(char const *s, char c, char *command)
 	size_t	i;
 	int		j;
 	int		s_word;
-	size_t	s_len;
 
 	ft_initiate_vars(&i, &j, &s_word);
 	array = ft_calloc((word_count(s, c) + 2), sizeof(char *));

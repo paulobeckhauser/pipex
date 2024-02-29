@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:20:16 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 11:24:36 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:45:40 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	full_string_store(t_info *structure)
 {
-	int		j;
-	size_t	len_string;
 	int		first_command_position;
 
 	if (structure->is_here_doc)
