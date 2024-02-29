@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 18:26:30 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/26 11:43:31 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:57:49 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,12 @@ void	pipes_structure(t_info *structure)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-	structure->output_fd = open(structure->argv[structure->argc - 1],
-			O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (structure->is_here_doc)
+		structure->output_fd = open(structure->argv[structure->argc - 1],
+				O_WRONLY | O_CREAT | O_APPEND, 0777);
+	else
+		structure->output_fd = open(structure->argv[structure->argc - 1],
+				O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (structure->output_fd == -1)
 	{
 		perror("open");
