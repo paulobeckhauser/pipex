@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/29 11:16:42 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/02/29 14:10:18 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,6 @@ EOC					=		"\033[0;0m"
 LINE_CLEAR			=		"\x1b[1A\x1b[M"
 
 
-
-
-
-
 # Standard
 NAME			= pipex
 
@@ -79,18 +75,18 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)store_arguments.c \
 
 
-# Source Files
-# SRCS			:= 	$(SRC_DIR)pipex.c \
-# 					$(SHARED_SRCS) \
-
-
-# SRCS_BONUS		:= 	$(SRC_DIR)pipex_bonus.c \
-# 					$(SRC_DIR)pipex_bonus_utils.c \
-# 					$(SHARED_SRCS)\
-					
+#Source Files
 SRCS			:= 	$(SRC_DIR)pipex.c \
+					$(SHARED_SRCS) \
+
+
+SRCS_BONUS		:= 	$(SRC_DIR)pipex_bonus.c \
 					$(SRC_DIR)pipex_bonus_utils.c \
 					$(SHARED_SRCS)\
+					
+# SRCS			:= 	$(SRC_DIR)pipex.c \
+# 					$(SRC_DIR)pipex_bonus_utils.c \
+# 					$(SHARED_SRCS)\
 
 # Creation of Object Files for each Source File
 OBJ				:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
