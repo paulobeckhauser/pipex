@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_5.c                                    :+:      :+:    :+:   */
+/*   store_command_full_string.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 17:40:19 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:15:46 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:10:51 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:11:10 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	stop_error_commands(t_info *structure, int i)
+void	store_command_full_string(t_info *structure)
 {
-	int	j;
+	int	first_command_position;
 
-	j = 0;
-	if (structure->path_commands[i] == NULL)
-	{
-		write(structure->fds_pipes[i][1], "", 1);
-		free_variables(structure);
-		exit(127);
-	}
+	if (structure->is_here_doc == 1)
+		first_command_position = 3;
 	else
-		execve(structure->path_commands[i], structure->argv_commands,
-			structure->envp);
+		first_command_position = 2;
+	structure->full_string = (char **)malloc(((structure->argc - 3) + 1)
+			* sizeof(char *));
+	if (!structure->full_string)
+	{
+		perror("Memory allocation failed!\n");
+		exit(EXIT_FAILURE);
+	}
+	copy_string(structure, first_command_position);
 }

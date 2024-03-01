@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 20:55:04 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 21:19:22 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ typedef struct s_info
 
 void		store_main_arguments(int argc, char **argv, char **envp,
 				t_info *structure);
-void		command_full_string_store(t_info *structure);
+void		store_command_full_string(t_info *structure);
 void		commands_allocate_memory(t_info *structure);
 void		allocate_memory_path(t_info *structure);
-void		commands_store(t_info *structure);
-void		path_commands_store(t_info *structure);
+void		store_commands(t_info *structure);
+void		store_path_commands(t_info *structure);
 void		get_path_env(t_info *structure);
+void		allocate_memory_commands(t_info *structure);
 void		condition_possible_paths(t_info *structure, int i, int j);
 void		copy_string(t_info *structure, int first_command_position);
 void		*ft_free(char **strs, int count);
@@ -72,7 +73,7 @@ void		close_pipes(t_info *structure);
 void		wait_child_processess(t_info *structure);
 void		check_here_doc(t_info *structure);
 void		here_doc_structure(t_info *structure);
-void		number_commands(t_info *structure);
+void		get_number_commands(t_info *structure);
 void		store_variables(t_info *structure);
 void		pipes_structure(t_info *structure);
 void		pipes_definition(t_info *structure);

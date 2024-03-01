@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_5.c                                    :+:      :+:    :+:   */
+/*   get_number_commands.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 17:40:19 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:15:46 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:07:13 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:07:22 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	stop_error_commands(t_info *structure, int i)
+void	get_number_commands(t_info *structure)
 {
-	int	j;
-
-	j = 0;
-	if (structure->path_commands[i] == NULL)
-	{
-		write(structure->fds_pipes[i][1], "", 1);
-		free_variables(structure);
-		exit(127);
-	}
+	if (structure->is_here_doc == 1)
+		structure->number_commands = structure->argc - 4;
 	else
-		execve(structure->path_commands[i], structure->argv_commands,
-			structure->envp);
+		structure->number_commands = structure->argc - 3;
 }
