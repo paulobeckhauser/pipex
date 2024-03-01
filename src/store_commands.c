@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:20:16 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:19:05 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:32:49 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	store_commands(t_info *structure)
 // 	{
 // 		structure->possible_paths = split_concat_command(structure->path_env,
 // 				':', structure->commands[i]);
-// 		condition_possible_paths(structure, i, j);
+// 		get_path_command(structure, i, j);
 // 		fail_paths(structure, i);
 // 		j = -1;
 // 		while (structure->possible_paths[++j] != NULL)

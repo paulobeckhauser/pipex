@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_child_processes.c                           :+:      :+:    :+:   */
+/*   get_path_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 21:49:45 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 23:21:54 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 22:28:12 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 23:32:24 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	create_child_processes(t_info *structure)
+void	get_path_command(t_info *structure, int i, int j)
 {
-	int	i;
-
-	i = 0;
-	while (i < structure->number_commands)
+	if (structure->possible_paths == NULL)
 	{
-		structure->pid[i] = fork();
-		if (structure->pid[i] == 0)
+		free(structure->path_env);
+		free(structure->commands[i]);
+	}
+	else
+	{
+		j = 0;
+		while (structure->possible_paths[j])
 		{
-			redirect_fds_child(structure, i);
-			execute_commands(structure, i);
-			ft_putstr_fd("testtest\n", 2);
+			if (access(structure->possible_paths[j], X_OK) == 0)
+				break ;
+			j++;
 		}
-		// ft_printf("%d\n", i);
-		i++;
+		// structure->path_commands[i] = ft_strdup(structure->possible_paths[j]);
+		condition_dup(structure, i, j);
 	}
 }

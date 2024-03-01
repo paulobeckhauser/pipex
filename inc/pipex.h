@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 22:02:19 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:32:49 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void		store_main_arguments(int argc, char **argv, char **envp,
 				t_info *structure);
 void		store_command_full_string(t_info *structure);
 void		commands_allocate_memory(t_info *structure);
-void		allocate_memory_path(t_info *structure);
+void		allocate_memory_path_commands(t_info *structure);
 void		allocate_memory_pid(t_info *structure);
 void		store_commands(t_info *structure);
 void		store_path_commands(t_info *structure);
 void		get_path_env(t_info *structure);
 void		allocate_memory_commands(t_info *structure);
-void		condition_possible_paths(t_info *structure, int i, int j);
+void		get_path_command(t_info *structure, int i, int j);
 void		copy_string(t_info *structure, int first_command_position);
 void		*ft_free(char **strs, int count);
 char		**check_and_free(char **array, int j);
@@ -84,5 +84,7 @@ void		free_fds_pipes(t_info *structure);
 void		free_variables(t_info *structure);
 void		free_2d_array_int(int **array);
 void		open_input_output_fds(t_info *structure);
+
+void	redirect_fds_child(t_info *structure, int i);
 
 #endif

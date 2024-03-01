@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/01 22:02:37 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/01 23:28:59 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ OBJ_DIR			:= obj/
 
 # Compiler and Flags
 CC				:= cc
-SANITIZER 		:= #-fsanitize=address
+SANITIZER 		:= #-fsanitize=address -g
 RM				:= rm -f
 # CFLAGS			:= -Wall -Wextra -Werror
 
@@ -85,6 +85,9 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)create_child_processes.c \
 					$(SRC_DIR)wait_child_processes.c \
 					$(SRC_DIR)execute_commands.c \
+					$(SRC_DIR)redirect_fds_child.c \
+					$(SRC_DIR)allocate_memory_path_commands.c \
+					$(SRC_DIR)get_path_command.c \
 
 
 #Source Files
