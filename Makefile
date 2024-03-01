@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/02/29 16:42:56 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/01 20:42:20 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,9 @@ OBJ_DIR			:= obj/
 
 # Compiler and Flags
 CC				:= cc
+SANITIZER 		:= #-fsanitize=address
 RM				:= rm -f
-CFLAGS			:= -Wall -Wextra -Werror
+# CFLAGS			:= -Wall -Wextra -Werror
 
 # Libraries
 LIBFT			:= ./libs/libft/libft.a
@@ -70,8 +71,10 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)pipex_utils_2.c \
 					$(SRC_DIR)pipex_utils_3.c \
 					$(SRC_DIR)pipex_utils_4.c \
+					$(SRC_DIR)pipex_utils_5.c \
 					$(SRC_DIR)free_variables.c \
-					$(SRC_DIR)store_arguments.c \
+					$(SRC_DIR)store_main_arguments.c \
+					$(SRC_DIR)ft_free.c \
 
 
 #Source Files
@@ -102,15 +105,16 @@ bonus: 		${NAME}_bonus
 $(OBJ_DIR)%.o: 	$(SRC_DIR)%.c
 					@echo $(YELLOW) "Compiling...\t" $< $(EOC)
 					@mkdir -p $(@D)
-					@${CC} ${CFLAGS} -I.libs/libft -c $? -o $@
+					@${CC} ${CFLAGS} $(SANITIZER) -I.libs/libft -c $? -o $@
 
 
 ${NAME}: 		${OBJ}
 					@echo $(GREEN) "Source files are compiled!\n" $(EOC)
 					@echo $(WHITE) "Building pipex for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
 					@make -s -C ./libs/libft
-					@${CC} ${CFLAGS} $^ -L./libs/libft -lft -o ${NAME}
+					@${CC} ${CFLAGS} $(SANITIZER) $^ -L./libs/libft -lft -o ${NAME}
 					@echo $(GREEN) "Pipex Mandatory is created!\n" $(EOC)
+					@echo $(RED) "REMEMBER TO UNCOMMENT CC FLAGS"
 
 ${NAME}_bonus:	${OBJ_BONUS}
 					@echo $(GREEN) "Source files are compiled!\n" $(EOC)

@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_variables.c                                   :+:      :+:    :+:   */
+/*   pipex_utils_5.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 01:15:59 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 20:30:48 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 17:40:19 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 20:56:13 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	free_possible_paths(t_info *structure)
+void	stop_error_commands(t_info *structure, int i)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	while (structure->possible_paths[i])
+	j = 0;
+	if (structure->path_commands[i] == NULL)
 	{
-		free(structure->possible_paths[i]);
-		i++;
+		write(structure->fds_pipes[i][1], "", 1);
+		free_variables(structure);
+		j = 0;
+		while (structure->fds_pipes[j])
+		{
+			free(structure->fds_pipes[j]);
+			j++;
+		}
+		free(structure->fds_pipes);
+		exit(127);
 	}
-	free(structure->possible_paths);
-}
-
-void	free_fds_pipes(t_info *structure)
-{
-	int	i;
-
-	i = 0;
-	while (structure->fds_pipes[i])
-	{
-		free(structure->fds_pipes[i]);
-		i++;
-	}
-	free(structure->fds_pipes);
+	else
+		execve(structure->path_commands[i], structure->argv_commands,
+			structure->envp);
 }

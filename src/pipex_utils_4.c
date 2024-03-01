@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:43:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 12:52:12 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:43:45 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	conditions_child(t_info *structure, int i)
 void	execution_commands(t_info *structure, int i)
 {
 	int	j;
+	int	l;
 
 	j = 0;
 	while (j < structure->number_commands - 1)
@@ -41,8 +42,16 @@ void	execution_commands(t_info *structure, int i)
 		j++;
 	}
 	structure->argv_commands = ft_split(structure->full_string[i], ' ');
-	execve(structure->path_commands[i], structure->argv_commands,
-		structure->envp);
+	l = 0;
+	while (structure->argv_commands[l])
+	{
+		structure->argv_commands[l] = ft_strtrim(structure->argv_commands[l],
+				"\'");
+		structure->argv_commands[l] = ft_strtrim(structure->argv_commands[l],
+				"\"");
+		l++;
+	}
+	stop_error_commands(structure, i);
 }
 
 void	ft_pipes(t_info *structure)

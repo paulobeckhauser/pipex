@@ -6,17 +6,17 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:20:16 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 16:45:40 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:54:50 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	full_string_store(t_info *structure)
+void	command_full_string_store(t_info *structure)
 {
-	int		first_command_position;
+	int	first_command_position;
 
-	if (structure->is_here_doc)
+	if (structure->is_here_doc == 1)
 		first_command_position = 3;
 	else
 		first_command_position = 2;
@@ -86,6 +86,7 @@ void	path_commands_store(t_info *structure)
 		structure->possible_paths = split_concat_command(structure->path_env,
 				':', structure->commands[i]);
 		condition_possible_paths(structure, i, j);
+		fail_paths(structure, i);
 		j = -1;
 		while (structure->possible_paths[++j] != NULL)
 			free(structure->possible_paths[j]);
@@ -94,3 +95,10 @@ void	path_commands_store(t_info *structure)
 	}
 	structure->path_commands[i] = NULL;
 }
+
+/***
+ * void exit_program(t_data *data, INT I, CHA\R *MESSAGE)
+ * {
+ * 		FRE
+ * }
+*/

@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:14:33 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 11:25:03 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:56:54 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ void	condition_possible_paths(t_info *structure, int i, int j)
 		}
 		condition_dup(structure, i, j);
 	}
+}
+
+void	fail_paths(t_info *structure, int i)
+{
+	if (structure->path_commands[i] == NULL)
+		ft_printf("%s: command not found\n", structure->commands[i]);
 }

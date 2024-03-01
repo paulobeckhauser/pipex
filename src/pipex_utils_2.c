@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 18:26:30 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 16:53:59 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:56:41 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	number_commands(t_info *structure)
 {
-	if (structure->is_here_doc)
-	{
+	if (structure->is_here_doc == 1)
 		structure->number_commands = structure->argc - 4;
-	}
 	else
 		structure->number_commands = structure->argc - 3;
 }
@@ -25,7 +23,7 @@ void	number_commands(t_info *structure)
 void	store_variables(t_info *structure)
 {
 	number_commands(structure);
-	full_string_store(structure);
+	command_full_string_store(structure);
 	commands_allocate_memory(structure);
 	commands_store(structure);
 	get_path_env(structure);
@@ -34,11 +32,18 @@ void	store_variables(t_info *structure)
 
 void	free_variables(t_info *structure)
 {
-	free_full_string(structure);
-	free_commands(structure);
-	free(structure->path_env);
-	free_path_commands(structure);
-	free(structure->pid);
+	if (structure->full_string)
+		free_2d_array_char(structure->full_string);
+	if (structure->commands)
+		free_2d_array_char(structure->commands);
+	if (structure->path_env)
+		free(structure->path_env);
+	if (structure->path_commands)
+		free_2d_array_char(structure->path_commands);
+	if (structure->pid)
+		free(structure->pid);
+	if (structure->fds_pipes)
+		free_2d_array_int(structure->fds_pipes);
 }
 
 void	pipes_structure(t_info *structure)
