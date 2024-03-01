@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_4.c                                    :+:      :+:    :+:   */
+/*   create_child_processes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 10:43:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 22:03:21 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:49:45 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 22:02:23 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	conditions_child(t_info *structure, int i)
+void	create_child_processes(t_info *structure)
 {
-	if (i == 0)
+	int	i;
+
+	i = 0;
+	while (i < structure->number_commands)
 	{
-		dup2(structure->input_fd, STDIN_FILENO);
-		close(structure->input_fd);
+		structure->pid[i] = fork();
+		if (structure->pid[i] == 0)
+		{
+			conditions_child(structure, i);
+			execute_commands(structure, i);
+		}
+		i++;
 	}
-	else
-		dup2(structure->fds_pipes[i - 1][0], STDIN_FILENO);
-	if (i == structure->number_commands - 1)
-	{
-		dup2(structure->output_fd, STDOUT_FILENO);
-		close(structure->output_fd);
-	}
-	else
-		dup2(structure->fds_pipes[i][1], STDOUT_FILENO);
 }

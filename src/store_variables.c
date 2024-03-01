@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_4.c                                    :+:      :+:    :+:   */
+/*   store_variables.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 10:43:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 22:03:21 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:25:54 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:26:07 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	conditions_child(t_info *structure, int i)
+void	store_variables(t_info *structure)
 {
-	if (i == 0)
-	{
-		dup2(structure->input_fd, STDIN_FILENO);
-		close(structure->input_fd);
-	}
-	else
-		dup2(structure->fds_pipes[i - 1][0], STDIN_FILENO);
-	if (i == structure->number_commands - 1)
-	{
-		dup2(structure->output_fd, STDOUT_FILENO);
-		close(structure->output_fd);
-	}
-	else
-		dup2(structure->fds_pipes[i][1], STDOUT_FILENO);
+	get_number_commands(structure);
+	store_command_full_string(structure);
+	allocate_memory_commands(structure);
+	store_commands(structure);
+	get_path_env(structure);
+	store_path_commands(structure);
 }

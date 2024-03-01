@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*   create_pipes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 12:18:58 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/02/29 10:51:54 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:31:38 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:32:01 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	pipes_creation(t_info *structure)
+void	create_pipes(t_info *structure)
 {
 	int	i;
 
@@ -38,46 +38,4 @@ void	pipes_creation(t_info *structure)
 		i++;
 	}
 	structure->fds_pipes[i] = NULL;
-}
-
-void	pipes_utilization(t_info *structure)
-{
-	int	i;
-
-	i = 0;
-	while (i < structure->number_commands)
-	{
-		structure->pid[i] = fork();
-		if (structure->pid[i] == 0)
-		{
-			conditions_child(structure, i);
-			execution_commands(structure, i);
-		}
-		i++;
-	}
-}
-
-void	close_pipes(t_info *structure)
-{
-	int	i;
-
-	i = 0;
-	while (i < structure->number_commands - 1)
-	{
-		close(structure->fds_pipes[i][0]);
-		close(structure->fds_pipes[i][1]);
-		i++;
-	}
-}
-
-void	wait_child_processess(t_info *structure)
-{
-	int	i;
-
-	i = 0;
-	while (i < structure->number_commands)
-	{
-		waitpid(structure->pid[i], NULL, 0);
-		i++;
-	}
 }

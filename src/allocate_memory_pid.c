@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_4.c                                    :+:      :+:    :+:   */
+/*   allocate_memory_pid.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 10:43:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 22:03:21 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:44:20 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:44:58 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	conditions_child(t_info *structure, int i)
+void	allocate_memory_pid(t_info *structure)
 {
-	if (i == 0)
-	{
-		dup2(structure->input_fd, STDIN_FILENO);
-		close(structure->input_fd);
-	}
-	else
-		dup2(structure->fds_pipes[i - 1][0], STDIN_FILENO);
-	if (i == structure->number_commands - 1)
-	{
-		dup2(structure->output_fd, STDOUT_FILENO);
-		close(structure->output_fd);
-	}
-	else
-		dup2(structure->fds_pipes[i][1], STDOUT_FILENO);
+	structure->pid = (pid_t *)ft_calloc((structure->number_commands + 1),
+			sizeof(pid_t));
 }

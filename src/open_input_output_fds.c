@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_2.c                                    :+:      :+:    :+:   */
+/*   open_input_output_fds.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 18:26:30 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:19:18 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/01 21:28:32 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/01 21:34:45 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	store_variables(t_info *structure)
-{
-	get_number_commands(structure);
-	store_command_full_string(structure);
-	allocate_memory_commands(structure);
-	store_commands(structure);
-	get_path_env(structure);
-	store_path_commands(structure);
-}
-
-void	free_variables(t_info *structure)
-{
-	if (structure->full_string)
-		free_2d_array_char(structure->full_string);
-	if (structure->commands)
-		free_2d_array_char(structure->commands);
-	if (structure->path_env)
-		free(structure->path_env);
-	if (structure->path_commands)
-		free_2d_array_char(structure->path_commands);
-	if (structure->pid)
-		free(structure->pid);
-	if (structure->fds_pipes)
-		free_2d_array_int(structure->fds_pipes);
-}
-
-void	pipes_structure(t_info *structure)
+void	open_input_output_fds(t_info *structure)
 {
 	structure->input_fd = open(structure->argv[1], O_RDONLY, 0777);
 	if (structure->input_fd == -1)
@@ -57,5 +31,4 @@ void	pipes_structure(t_info *structure)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-	pipes_definition(structure);
 }

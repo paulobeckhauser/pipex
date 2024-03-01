@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:18:33 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:18:54 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/01 21:42:48 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	store_path_commands(t_info *structure)
 
 	allocate_memory_path(structure);
 	i = 0;
+	j = 0;
 	while (structure->commands[i])
 	{
 		structure->possible_paths = split_concat_command(structure->path_env,

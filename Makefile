@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/01 21:21:22 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/01 22:02:37 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,6 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)get_path_env.c \
 					$(SRC_DIR)command_split_concat.c \
 					$(SRC_DIR)command_split_concat_utils.c \
-					$(SRC_DIR)pipex_utils.c \
-					$(SRC_DIR)pipex_utils_2.c \
-					$(SRC_DIR)pipex_utils_3.c \
 					$(SRC_DIR)pipex_utils_4.c \
 					$(SRC_DIR)pipex_utils_5.c \
 					$(SRC_DIR)free_variables.c \
@@ -79,6 +76,15 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)store_command_full_string.c \
 					$(SRC_DIR)allocate_memory_commands.c \
 					$(SRC_DIR)store_path_commands.c \
+					$(SRC_DIR)store_variables.c \
+					$(SRC_DIR)open_input_output_fds.c \
+					$(SRC_DIR)create_pipes.c \
+					$(SRC_DIR)close_pipes_parent.c \
+					$(SRC_DIR)close_pipes_child.c \
+					$(SRC_DIR)allocate_memory_pid.c \
+					$(SRC_DIR)create_child_processes.c \
+					$(SRC_DIR)wait_child_processes.c \
+					$(SRC_DIR)execute_commands.c \
 
 
 #Source Files
