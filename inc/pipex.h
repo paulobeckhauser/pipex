@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 12:04:28 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:01:44 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void		pipes_structure(t_info *structure);
 void		pipes_definition(t_info *structure);
 void		close_pipes_child(t_info *structure, int j);
 void		free_2d_array_char(char **array);
-void		free_possible_paths(t_info *structure);
 void		free_fds_pipes(t_info *structure);
 void		free_variables(t_info *structure);
 void		free_2d_array_int(int **array);

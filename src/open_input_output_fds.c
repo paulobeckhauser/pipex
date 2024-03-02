@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:28:32 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 21:34:45 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:46:20 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	open_input_output_fds(t_info *structure)
 	structure->input_fd = open(structure->argv[1], O_RDONLY, 0777);
 	if (structure->input_fd == -1)
 	{
-		perror("open");
-		exit(EXIT_FAILURE);
+		ft_printf("%s: No such file or directory\n", structure->argv[1]);
+		structure->input_fd = 0;
 	}
 	if (structure->is_here_doc == 1)
 		structure->output_fd = open(structure->argv[structure->argc - 1],
