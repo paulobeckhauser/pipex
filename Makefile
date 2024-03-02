@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/02 02:21:39 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/02 12:00:29 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,9 +68,6 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)get_path_env.c \
 					$(SRC_DIR)command_split_concat.c \
 					$(SRC_DIR)command_split_concat_utils.c \
-					$(SRC_DIR)pipex_utils_4.c \
-					$(SRC_DIR)pipex_utils_5.c \
-					$(SRC_DIR)free_variables.c \
 					$(SRC_DIR)store_main_arguments.c \
 					$(SRC_DIR)ft_free.c \
 					$(SRC_DIR)get_number_commands.c \
@@ -89,6 +86,7 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)redirect_fds_child.c \
 					$(SRC_DIR)allocate_memory_path_commands.c \
 					$(SRC_DIR)get_path_command.c \
+					$(SRC_DIR)pipex_utils.c \
 
 
 #Source Files

@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 00:16:58 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:04:28 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void		free_2d_array_int(int **array);
 void		open_input_output_fds(t_info *structure);
 
 void		redirect_fds_child(t_info *structure, int i);
+void		execute_pipex_structure(t_info *structure);
 
 #endif

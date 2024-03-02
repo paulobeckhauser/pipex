@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_variables.c                                   :+:      :+:    :+:   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 01:15:59 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 20:30:48 by pabeckha         ###   ########.fr       */
+/*   Created: 2024/03/02 11:58:53 by pabeckha          #+#    #+#             */
+/*   Updated: 2024/03/02 12:04:03 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	free_possible_paths(t_info *structure)
+void	execute_pipex_structure(t_info *structure)
 {
-	int	i;
-
-	i = 0;
-	while (structure->possible_paths[i])
-	{
-		free(structure->possible_paths[i]);
-		i++;
-	}
-	free(structure->possible_paths);
-}
-
-void	free_fds_pipes(t_info *structure)
-{
-	int	i;
-
-	i = 0;
-	while (structure->fds_pipes[i])
-	{
-		free(structure->fds_pipes[i]);
-		i++;
-	}
-	free(structure->fds_pipes);
+	store_variables(structure);
+	open_input_output_fds(structure);
+	create_pipes(structure);
+	allocate_memory_pid(structure);
+	create_child_processes(structure);
+	close_pipes_parent(structure);
+	wait_child_processess(structure);
+	free_variables(structure);
 }
