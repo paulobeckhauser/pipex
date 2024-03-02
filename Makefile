@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/02 13:45:03 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/02 14:55:19 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,8 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)allocate_memory_path_commands.c \
 					$(SRC_DIR)get_path_command.c \
 					$(SRC_DIR)pipex_utils.c \
+					$(SRC_DIR)handle_single_quotes.c \
+					$(SRC_DIR)handle_double_quotes.c \
 
 
 #Source Files
