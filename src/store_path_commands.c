@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:18:33 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 02:37:48 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:15:13 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	checking_access(t_info *structure)
 	{
 		if (access(structure->path_commands[j], X_OK) != 0)
 		{
-			ft_printf("%s: command not found\n", structure->path_commands[j]);
+			ft_printf("%s: command not found\n", structure->commands[j]);
 			if (j == structure->number_commands - 1)
 			{
 				structure->output_fd = open(structure->argv[structure->argc
