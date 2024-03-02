@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/02 14:55:19 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/02 15:11:44 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +55,9 @@ OBJ_DIR			:= obj/
 
 # Compiler and Flags
 CC				:= cc
-SANITIZER 		:= #-fsanitize=address -g
+# SANITIZER 		:= #-fsanitize=address -g
 RM				:= rm -f
-# CFLAGS			:= -Wall -Wextra -Werror
+CFLAGS			:= -Wall -Wextra -Werror
 
 # Libraries
 LIBFT			:= ./libs/libft/libft.a
@@ -127,8 +127,8 @@ ${NAME}: 		${OBJ}
 					@echo $(WHITE) "Building pipex for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
 					@make -s -C ./libs/libft
 					@${CC} ${CFLAGS} $(SANITIZER) $^ -L./libs/libft -lft -o ${NAME}
-					@echo $(GREEN) "Pipex Mandatory is created!\n" $(EOC)
-					@echo $(RED) "REMEMBER TO UNCOMMENT CC FLAGS" $(RESET_COLOR)
+					@echo $(GREEN) "Pipex Mandatory is created!\n" $(EOC) $(RESET_COLOR)
+
 
 ${NAME}_bonus:	${OBJ_BONUS}
 					@echo $(GREEN) "Source files are compiled!\n" $(EOC)

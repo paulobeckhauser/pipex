@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:01:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 14:57:20 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:50:39 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	stop_error_commands(t_info *structure, int i)
 void	execute_commands(t_info *structure, int i)
 {
 	int	j;
-	int	l;
 
 	j = 0;
 	while (j < structure->number_commands - 1)

@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:23:14 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 12:04:49 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:29:03 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv, char **envp)
 
 {
-	int		i;
 	t_info	structure;
 
 	if (argc >= 5)

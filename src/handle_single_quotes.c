@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:51:13 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 15:04:20 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:48:51 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	handle_single_quotes(t_info *structure)
 				count++;
 			m++;
 		}
+		string_temp = (char *)ft_calloc(ft_strlen(structure->argv_commands[k])
+				- m + 1, sizeof(char));
 		condition_to_remove_single(structure, string_temp, count, k);
+		free(string_temp);
 		k++;
 	}
 }
