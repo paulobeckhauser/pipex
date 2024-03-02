@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 22:32:49 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 00:16:58 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void		*ft_free(char **strs, int count);
 char		**check_and_free(char **array, int j);
 void		condition_dup(t_info *structure, int i, int j);
 char		**split_concat_command(char const *s, char c, char *command);
-void		fail_paths(t_info *structure, int i);
 void		conditions_child(t_info *structure, int i);
 void		execute_commands(t_info *structure, int i);
 void		create_pipes(t_info *structure);
@@ -85,6 +84,6 @@ void		free_variables(t_info *structure);
 void		free_2d_array_int(int **array);
 void		open_input_output_fds(t_info *structure);
 
-void	redirect_fds_child(t_info *structure, int i);
+void		redirect_fds_child(t_info *structure, int i);
 
 #endif

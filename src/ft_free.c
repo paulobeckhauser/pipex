@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 20:17:49 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 23:12:29 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 02:08:16 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	free_variables(t_info *structure)
 		free(structure->path_env);
 	if (structure->path_commands)
 		free_2d_array_char(structure->path_commands);
-	// if (structure->argv_commands)
-	// 	free_2d_array_char(structure->argv_commands);
 	if (structure->pid)
 		free(structure->pid);
 	if (structure->fds_pipes)

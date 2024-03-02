@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:28:12 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/01 23:32:24 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/02 00:11:14 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	get_path_command(t_info *structure, int i, int j)
 				break ;
 			j++;
 		}
-		// structure->path_commands[i] = ft_strdup(structure->possible_paths[j]);
 		condition_dup(structure, i, j);
 	}
 }

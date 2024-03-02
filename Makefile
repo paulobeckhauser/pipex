@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/01 23:28:59 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/02 02:21:39 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ PURPLE				=		"\033[0;35m"
 CYAN				=		"\033[0;36m"
 WHITE				=		"\033[1;37m"
 EOC					=		"\033[0;0m"
+RESET_COLOR 		= 		"\033[0m"
 
 
 # Standard
@@ -54,7 +55,7 @@ OBJ_DIR			:= obj/
 
 # Compiler and Flags
 CC				:= cc
-SANITIZER 		:= #-fsanitize=address -g
+SANITIZER 		:= # -fsanitize=address -g
 RM				:= rm -f
 # CFLAGS			:= -Wall -Wextra -Werror
 
@@ -127,14 +128,14 @@ ${NAME}: 		${OBJ}
 					@make -s -C ./libs/libft
 					@${CC} ${CFLAGS} $(SANITIZER) $^ -L./libs/libft -lft -o ${NAME}
 					@echo $(GREEN) "Pipex Mandatory is created!\n" $(EOC)
-					@echo $(RED) "REMEMBER TO UNCOMMENT CC FLAGS"
+					@echo $(RED) "REMEMBER TO UNCOMMENT CC FLAGS" $(RESET_COLOR)
 
 ${NAME}_bonus:	${OBJ_BONUS}
 					@echo $(GREEN) "Source files are compiled!\n" $(EOC)
 					@echo $(WHITE) "Building pipex for" $(YELLOW) "Bonus" $(WHITE)
 					@make -s -C ./libs/libft
 					@${CC} ${CFLAGS} $^ -L./libs/libft -lft -o ${NAME}_bonus
-					@echo $(GREEN) "Pipex Bonus is created!\n" $(EOC)
+					@echo $(GREEN) "Pipex Bonus is created!\n" $(EOC) $(RESET_COLOR)
 
 libft:
 				@make -C libs/libft
