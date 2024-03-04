@@ -6,7 +6,7 @@
 /*   By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:58:36 by pabeckha          #+#    #+#             */
-/*   Updated: 2024/03/02 15:04:28 by pabeckha         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:07:28 by pabeckha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <unistd.h>
+
+# define MAX_FD 1024
 
 typedef struct s_info
 {
@@ -93,5 +95,6 @@ void		condition_to_remove_double(t_info *structure, char *string_temp,
 
 void		handle_single_quotes(t_info *structure);
 void		handle_double_quotes(t_info *structure);
+void		close_fds_parent(void);
 
 #endif

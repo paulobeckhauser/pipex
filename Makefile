@@ -6,7 +6,7 @@
 #    By: pabeckha <pabeckha@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 17:56:15 by pabeckha          #+#    #+#              #
-#    Updated: 2024/03/02 15:11:44 by pabeckha         ###   ########.fr        #
+#    Updated: 2024/03/04 11:06:07 by pabeckha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SHARED_SRCS		:= 	$(SRC_DIR)store_commands.c \
 					$(SRC_DIR)pipex_utils.c \
 					$(SRC_DIR)handle_single_quotes.c \
 					$(SRC_DIR)handle_double_quotes.c \
+					$(SRC_DIR)close_fds_parent.c \
 
 
 #Source Files
